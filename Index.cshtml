@@ -21,8 +21,31 @@
         <a asp-page="/NySide/BjørnUglebjerg">Kort om Bjørn Uglebjerg</a>
     </div>
     <h2>Her får du en tidslinje af bandet:</h2>
-    <p>1969 – Starten, 1971 – Første ændring i bandet, 1971–1976 – Gennembrud og stor succes, 1976–1977 – Internationalt forsøg, 1978 – Opløsning</p>
-    <h3 class="display-6">
+@functions {
+    public class TimelineEvent
+    {
+        public int Year { get; set; }
+        public string Event { get; set; }
+    }
+}
+
+@{
+    var timeline = new List<TimelineEvent>
+    {
+        new TimelineEvent { Year = 1969, Event = "Bandet dannes" },
+        new TimelineEvent { Year = 1971, Event = "Første album" },
+        new TimelineEvent { Year = 1978, Event = "Opløsning" }
+    };
+}
+
+@foreach (var item in timeline)
+{
+    <div>
+        <h2>@item.Year</h2>
+        <p>@item.Event</p>
+    </div>
+}
+   <h3>
         Gasolin' var en dansk rockgruppe, der blev dannet i 1969 på Christianshavn og eksisterede omkring ni år frem. 
         Gruppen bestod af Wili Jønsson, Franz Beckerlee, Bjørn Uglebjerg – senere erstattet af Søren Berlev – 
         og med Kim Larsen som forsanger og frontfigur. 
